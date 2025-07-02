@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - CameraRent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="back-nav">
+        <a href="dasboard.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Kembali ke Beranda</span>
+        </a>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-form">
+            <div class="auth-header">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-camera"></i>
+                    <span>CameraRent</span>
+                </a>
+                <h2>Masuk ke Akun Anda</h2>
+                <p>Selamat datang kembali! Silakan masukkan detail Anda.</p>
+            </div>
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="contoh@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                </div>
+                <div class="form-options">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Ingat saya</label>
+                    </div>
+                    <a href="#" class="forgot-password">Lupa Password?</a>
+                </div>
+                <div id="formError" class="error-message"></div>
+                <button type="submit" class="btn-primary">Masuk</button>
+            </form>
+            <div class="auth-link">
+                <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js /login.js"></script>
+</body>
+</html>
