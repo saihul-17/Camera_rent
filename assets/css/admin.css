@@ -1,0 +1,664 @@
+/* Universal Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6; /* Warna background dari body utama */
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sidebar-header h3 {
+    color: #667eea; /* Warna logo utama */
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.sidebar-header i {
+    font-size: 1.8em;
+    background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient logo */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 5px;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #555;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 8px;
+    margin: 0 15px;
+    font-weight: 500;
+}
+
+.sidebar-menu li a i {
+    margin-right: 15px;
+    font-size: 1.2em;
+    width: 25px; /* Ensure consistent icon alignment */
+    text-align: center;
+}
+
+.sidebar-menu li.active a,
+.sidebar-menu li a:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    color: #667eea; /* Warna teks konsisten */
+    font-weight: 600;
+    transform: translateX(5px);
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+/* Navbar Admin (Similar to Index Header) */
+.navbar-admin {
+    background-color: #fff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    position: relative;
+    width: 450px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 20px 12px 50px; /* Left padding for icon */
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #667eea; /* Border fokus sesuai warna utama */
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.2); /* Shadow fokus sesuai warna utama */
+}
+
+.search-bar i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.1em;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-icons i {
+    font-size: 1.5em;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-icons i:hover {
+    color: #667eea; /* Warna ikon hover */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.user-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 3px solid #667eea; /* Border profil sesuai warna utama */
+    object-fit: cover;
+}
+
+.user-profile span {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.05em;
+}
+
+/* Content Sections */
+.content-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    display: none; /* Hidden by default, shown by JS */
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 18px;
+    font-weight: 700;
+}
+
+/* Dashboard Cards (Similar to Index Features) */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.dashboard-cards .card {
+    background-color: #f7f9fd; /* Warna terang dari background hero atau card */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 6px solid #667eea; /* Border sesuai warna utama */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-cards .card i {
+    font-size: 3em;
+    background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient ikon card */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.dashboard-cards .card h3 {
+    margin: 5px 0;
+    color: #555;
+    font-size: 1.3em;
+}
+
+.dashboard-cards .card p {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* Chart Container */
+.chart-container {
+    background-color: #f7f9fd; /* Warna terang dari background hero atau card */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.chart-container h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Action Bar (for products, orders, users) */
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px; /* Spacing between items */
+}
+
+/* Buttons (Similar to Index Buttons) */
+.btn-primary-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradient button primary */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3); /* Shadow sesuai gradient */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary-admin:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+
+.filter-sort select,
+.filter-sort input[type="date"] {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-left: 10px;
+    font-size: 0.95em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-sort select:focus,
+.filter-sort input[type="date"]:focus {
+    border-color: #667eea; /* Border fokus sesuai warna utama */
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.2);
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 700px; /* Ensures table does not collapse too much */
+}
+
+table th,
+table td {
+    padding: 15px 20px;
+    border: 1px solid #eee;
+    text-align: left;
+    vertical-align: middle;
+}
+
+table th {
+    background-color: #f8f8f8;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+table tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.product-list img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+/* Table Action Buttons */
+.btn-action {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-action i {
+    font-size: 1.1em;
+}
+
+
+.btn-action.edit {
+    background-color: #ffc107; /* Warning yellow */
+    color: white;
+}
+.btn-action.edit:hover { background-color: #e0a800; transform: translateY(-1px); }
+
+.btn-action.delete {
+    background-color: #dc3545; /* Danger red */
+    color: white;
+}
+.btn-action.delete:hover { background-color: #c82333; transform: translateY(-1px); }
+
+.btn-action.view {
+    background-color: #17a2b8; /* Info blue */
+    color: white;
+}
+.btn-action.view:hover { background-color: #138496; transform: translateY(-1px); }
+
+.btn-action.confirm, .btn-action.return {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Menggunakan gradient untuk confirm/return */
+    color: white;
+}
+.btn-action.confirm:hover, .btn-action.return:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3); /* Shadow sesuai gradient */
+}
+
+
+/* Status Badges */
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-block; /* For consistent padding */
+}
+
+.status-pending {
+    background-color: #fdf8e6; /* Warna terang kekuningan */
+    color: #8a6d3b; /* Warna gelap kekuningan */
+    border: 1px solid #faebcc;
+}
+
+.status-completed {
+    background-color: #e6f7ed; /* Warna terang kehijauan */
+    color: #3c763d; /* Warna gelap kehijauan */
+    border: 1px solid #d6e9c6;
+}
+
+.status-renting {
+    background-color: #e9f0fc; /* Warna terang kebiruan dari warna utama */
+    color: #4a5d91; /* Warna gelap kebiruan */
+    border: 1px solid #d0e0f8;
+}
+
+.status-cancelled {
+    background-color: #fde8e9; /* Warna terang kemerahan */
+    color: #a94442; /* Warna gelap kemerahan */
+    border: 1px solid #f2dede;
+}
+
+/* Settings Form */
+.settings-form .form-group {
+    margin-bottom: 20px;
+}
+
+.settings-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.settings-form input[type="text"],
+.settings-form input[type="email"],
+.settings-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-form input:focus,
+.settings-form select:focus {
+    border-color: #667eea; /* Fokus sesuai warna utama */
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 220px;
+        padding: 20px 0;
+    }
+    .sidebar-header h3 {
+        font-size: 1.5em;
+    }
+    .sidebar-header i {
+        font-size: 1.5em;
+    }
+    .sidebar-menu li a {
+        padding: 12px 20px;
+        font-size: 0.95em;
+    }
+    .sidebar-menu li a i {
+        margin-right: 12px;
+        width: 20px;
+    }
+    .main-content {
+        padding: 20px;
+    }
+    .navbar-admin {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .nav-icons {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+        gap: 15px;
+    }
+    .user-profile {
+        margin-left: 0;
+    }
+    .dashboard-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .action-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filter-sort select,
+    .filter-sort input {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+    table th, table td {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+    .product-list img {
+        width: 50px;
+        height: 50px;
+    }
+    .btn-action {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    .sidebar-header {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+    .sidebar-menu {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .sidebar-menu li {
+        margin: 5px;
+    }
+    .sidebar-menu li a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        margin: 0;
+        text-align: center;
+        flex-direction: column; /* Stack icon and text */
+        border-radius: 6px;
+    }
+    .sidebar-menu li a i {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .main-content {
+        padding: 15px;
+    }
+    .content-section {
+        padding: 20px;
+    }
+    .content-section h2 {
+        font-size: 1.8em;
+    }
+    .dashboard-cards {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+    .dashboard-cards .card {
+        padding: 20px;
+    }
+    .dashboard-cards .card i {
+        font-size: 2.5em;
+    }
+    .dashboard-cards .card p {
+        font-size: 1.6em;
+    }
+    table {
+        min-width: unset; /* Allow table to shrink more on very small screens */
+    }
+    table th, table td {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+    .btn-action {
+        padding: 6px 10px;
+        font-size: 0.75em;
+        margin-right: 5px;
+    }
+    .btn-action i {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-admin {
+        padding: 10px 15px;
+    }
+    .search-bar input {
+        padding: 8px 12px 8px 35px;
+    }
+    .search-bar i {
+        left: 15px;
+    }
+    .nav-icons i {
+        font-size: 1.3em;
+        margin-left: 10px;
+    }
+    .user-profile img {
+        width: 35px;
+        height: 35px;
+    }
+    .user-profile span {
+        font-size: 0.9em;
+    }
+    .content-section h2 {
+        font-size: 1.5em;
+    }
+    .dashboard-cards .card i {
+        font-size: 2em;
+    }
+    .dashboard-cards .card p {
+        font-size: 1.4em;
+    }
+    .btn-primary-admin {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .filter-sort select,
+    .filter-sort input {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+    .status {
+        padding: 4px 8px;
+        font-size: 0.75em;
+    }
+}
